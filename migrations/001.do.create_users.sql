@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS users (
     user_password VARCHAR NOT NULL,
     user_email VARCHAR UNIQUE NOT NULL,
     is_admin BOOLEAN NOT NULL
-)
+);
