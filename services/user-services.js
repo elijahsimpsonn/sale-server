@@ -40,12 +40,28 @@ const UserService = {
       user_name: xss(user.user_name),
       user_date_created: user.user_date_created,
     };
-  }
+  },
 
   // ----- Main User Services -----//
 
   //TODO
   // CRUD Platforms for User
+  getAllPlatforms(db, user_id) {
+    return db('platforms').select('*').where(user_id)
+  },
+
+  createNewPlatform(db, newPlatform) {
+    return db('platforms').insert(newPlatform).returning('*').then(([res]) => res)
+  },
+
+  editPlaform(db, platform_id, newPlatform) {
+    return db('platforms').where({platform_id}).update(newPlatform, ['*'])
+  },
+
+  deletePlatform(db, platform_id) {
+    return db('platforms').delete().where({platform_id})
+  },
+
   // CRUD Platform Fees for User
   // CRUD Dead Items for User
   // CRUD Shipping Supplies for User
