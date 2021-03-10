@@ -63,6 +63,10 @@ const UserService = {
   },
 
   // CRUD Platform Fees for User
+
+  getAllPlatformFees(db, user_id, platform_id) {
+    
+  },
   // CRUD Dead Items for User
   // CRUD Shipping Supplies for User
   // CRUD General Fees for User
