@@ -63,11 +63,27 @@ const UserService = {
   },
 
   // CRUD Platform Fees for User
-
-  getAllPlatformFees(db, user_id, platform_id) {
-    
+  getAllPlatformFees(db, user_id) {
+    return db('platform_fees').select('*').where(user_id)
   },
+
+  createNewPlatformFee(db, newPlatformFee) {
+    return db('platform_fees').insert(newPlatformFee).returning('*').then(([res]) => res)
+  },
+
+  editPlatformFee(db, platform_fee_id, newPlatformFee) {
+    return db('platform_fees').where({platform_fee_id}).update(newPlatformFee, ['*'])
+  },
+
+  deletePlatformFee(db, platform_fee_id) {
+    return db('platform_fees').delete().where({platform_fee_id})
+  },
+
   // CRUD Dead Items for User
+  getAllDeadItems(db, user_id) {
+      return db('')
+  }
+  
   // CRUD Shipping Supplies for User
   // CRUD General Fees for User
   // CRUD Item Locations for User
